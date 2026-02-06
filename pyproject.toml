@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twitch-recorder"
+version = "1.0.0"
+description = "Automatically record Twitch streams with reconnection support, designed for Jellyfin integration."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "streamlink>=6.0",
+    "pyyaml>=6.0",
+    "requests>=2.31",
+]
+
+[project.scripts]
+twitch-recorder = "twitch_recorder.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

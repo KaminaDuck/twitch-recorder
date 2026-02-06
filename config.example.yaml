@@ -1,0 +1,43 @@
+# Twitch Stream Recorder — Configuration
+# Copy this file to config.yaml and edit to taste.
+
+# Twitch channel username (required)
+channel: channelname
+
+# Where to save recordings (should point at a Jellyfin library)
+output_dir: /path/to/jellyfin/library/TwitchRecordings
+
+# Stream quality: best, 1080p60, 720p60, 720p, 480p, worst
+quality: best
+
+# How long (seconds) to wait for the stream to go live before giving up
+initial_wait: 7200  # 2 hours
+
+# Seconds between "is it live?" checks while waiting
+retry_interval: 30
+
+# Seconds before considering the stream data connection dead
+stream_timeout: 120
+
+# After a mid-stream drop, how long to wait for the stream to return
+reconnect_grace_period: 300  # 5 minutes
+
+# How often to check during the reconnect grace period
+reconnect_check_interval: 15
+
+# Maximum reconnection attempts per session
+max_reconnects: 10
+
+# Merge all segments into a single .mp4 when the stream ends (requires ffmpeg)
+merge_segments: true
+
+# Delete individual .ts segment files after a successful merge
+cleanup_segments: true
+
+# Path to ffmpeg binary (if not on PATH)
+ffmpeg_path: ffmpeg
+
+# Extra arguments passed to streamlink
+streamlink_args:
+  - "--twitch-disable-ads"
+  - "--twitch-disable-hosting"
